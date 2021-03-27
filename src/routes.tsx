@@ -6,6 +6,8 @@ import {
   Redirect,
   withRouter,
 } from 'react-router-dom'
+import { ArtsPage } from './pages/art'
+import { DomainPage } from './pages/item'
 import { MainPage } from './pages/main'
 
 const ScrollToTop = withRouter(({ history }: any) => {
@@ -26,6 +28,8 @@ export const Routes = () => (
     <ScrollToTop />
     <Switch>
       <Route path="/" exact component={MainPage} />
+      <Route path="/art" exact component={ArtsPage} />
+      <Route path="/:domain" exact component={DomainPage} />
       <Redirect to="/" />
     </Switch>
   </Router>

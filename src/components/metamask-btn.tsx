@@ -1,12 +1,11 @@
 import React, { useCallback, useMemo } from 'react'
 import { Box, Button, Link, makeStyles, Tooltip, Typography } from '@material-ui/core'
 import { useMetamask } from '~/hooks/useMetamask'
-import { Identicon } from './identicon'
 import { cutString } from '~/utils/cut-string'
 
 export const MetamaskBtn = () => {
   const { hasWeb3, account = '', handleConnectWithMetamask, handleDisconnectFromMetamask } = useMetamask()
-  const displayedAddress = useMemo(() => cutString(account, 10), [account])
+  const displayedAddress = useMemo(() => cutString(account, 12), [account])
   const styles = useStyles()
 
   const handleClick = useCallback(() => {
@@ -32,18 +31,17 @@ export const MetamaskBtn = () => {
   return (
     <>
       <Button className={`${styles.btn} ${styles.hasAccount}`} onClick={handleClick}>
-        {account ? <AccountButton account={account} displayedAddress={displayedAddress} /> : 'Connect wallet'}
+        {account ? <AccountButton displayedAddress={displayedAddress} /> : 'Connect wallet'}
       </Button>
     </>
   )
 }
 
-export const AccountButton = ({ account, displayedAddress }: { account: string, displayedAddress: string }) => {
+export const AccountButton = ({displayedAddress }: { displayedAddress: string }) => {
   const styles = useStyles()
 
   return (
     <Box className={styles.account}>
-      <Identicon className={styles.avatar} hash={account} size={30} />
       <Typography>{displayedAddress}</Typography>
     </Box>
   )
@@ -64,7 +62,8 @@ const useStyles = makeStyles({
     },
   },
   hasAccount: {
-    borderRadius: 50,
+    width: '100%',
+    minHeight: 60,
   },
   account: {
     display: 'flex',

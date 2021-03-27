@@ -4,11 +4,14 @@ import { Box } from '@material-ui/core'
 import { Header } from '~/components/header'
 import { Footer } from '~/components/footer'
 import { TabHead } from '~/components/tab-head'
+import { Breadcrumbs, IBreadcrumb } from '~/components/breadcrumbs'
 
 type Props = {
   children: React.ReactChild | React.ReactChild[]
   hasTabs?: boolean
+  hasBreadCrumbs?: boolean
   currentTabIndex?: number
+  paths?: IBreadcrumb[]
 }
 
 const tabs = [
@@ -24,7 +27,13 @@ const tabs = [
   },
 ]
 
-export const DefaultLayout = ({ children, hasTabs = true, currentTabIndex = 0 }: Props) => {
+export const DefaultLayout = ({
+  children,
+  hasTabs = true,
+  hasBreadCrumbs = false,
+  currentTabIndex = 0,
+  paths = [],
+}: Props) => {
   const history = useHistory()
 
   const onChangeTab = useCallback((currentIndex: number) => {
@@ -39,6 +48,7 @@ export const DefaultLayout = ({ children, hasTabs = true, currentTabIndex = 0 }:
       <Header />
       <Box component="main" flex={1}>
         {hasTabs && <TabHead tabs={tabs} currentTabIndex={currentTabIndex} onChangeTab={onChangeTab} />}
+        {hasBreadCrumbs && <Breadcrumbs paths={paths} />}
         {
           Array.isArray(children) ?
             (

@@ -2,29 +2,31 @@ import { createSlice } from '@reduxjs/toolkit'
 
 export type IDomain = {
   name: string
-  category: typeof domainTypes
+  categories?: string[]
   price: number
-  state: 'Available' | 'Not available',
+  isAvailable?: boolean,
   whenAvailable?: string
   picture?: string
   color?: string
+  associatedHash: string
 }
 
 export type IFilterType = {
-  title: typeof domainTypes
-  type: typeof domainTypes
+  title: string
+  type: string
   selected: boolean
 }
 
 export type IFilterAvailability = {
   title: string
-  type: typeof availabilityTypes
+  type: string
   selected: boolean
 }
 
 export type IDomainsReducer = {
   filter: {
-    types: IFilterType[]
+    types: IFilterType[],
+    isAvailable: boolean,
     availabilities: IFilterAvailability[]
   }
   fetchedDomains: IDomain[]
@@ -32,19 +34,16 @@ export type IDomainsReducer = {
 }
 
 const domainTypes = [
-  'IT',
-  'financial',
-  'services',
-  'marketing',
-  'beauty',
-  'industry',
-  'traveling',
-  'energy',
-  'community',
-  'automotive',
-  'education',
-  'legal',
-  'media',
+  'Infrastructure',
+  'Community',
+  'Business',
+  'Trade',
+  'Development',
+  'Security',
+  'Finances',
+  'Asset',
+  'NFT',
+  'Regulation',
 ]
 
 const domainTypesWithFlags = domainTypes.map(type => ({ title: type, type, selected: false }))
@@ -64,10 +63,20 @@ const domainAvailabilities = [
   },
 ]
 
-const availabilityTypes = domainAvailabilities.map((availability: any) => availability.type)
 const availabilityTypesWithFlags = domainAvailabilities.map((availability: any) =>
   ({ ...availability, selected: false }),
 )
+
+const getDomainsByFilters = (domains: any | IDomain[], selectedTypes: string[]) => {
+  return domains.filter((domain: any | IDomain) => {
+    if (!selectedTypes.length) return domain
+
+    const availableType = selectedTypes.find(type =>
+      domain.categories && domain.categories.map((type: string) => type.toLowerCase()).includes(type.toLowerCase()))
+
+    return availableType
+  })
+}
 
 const counter = createSlice({
   name: 'domains',
@@ -75,38 +84,39 @@ const counter = createSlice({
     filter: {
       types: domainTypesWithFlags,
       availabilities: availabilityTypesWithFlags,
+      isAvailable: false,
     },
     fetchedDomains: [],
     filteredDomains: [],
   },
   reducers: {
-    setDomainsType: (state, action) => {
-      state.filter = {
-        ...state.filter,
-        types: action.payload,
-      }
-    },
-    setDomainsAvailability: (state, action) => {
-      state.filter = {
-        ...state.filter,
-        availabilities: action.payload,
-      }
-    },
     setFilter: (state, action) => {
-      const { payload } = action
-      const { types, availabilities } = payload
+      const { isAvailable, types } = action.payload
+      const filteredDomainsByTypes = getDomainsByFilters(
+        state.fetchedDomains,
+        types.filter((type: IFilterType) => type.selected).map(({ type }: Pick<IFilterType, 'type'>) => type),
+      )
 
-      state.filter = {
-        ...state.filter,
-        types,
-        availabilities,
-      }
+      const filteredDomainsByAvailability = filteredDomainsByTypes.filter(
+        (domain: IDomain) => isAvailable ? domain.isAvailable === isAvailable : domain,
+      )
+
+      state.filteredDomains = filteredDomainsByAvailability
+      state.filter.types = types
+      state.filter.isAvailable = isAvailable
     },
     setDomains: (state, action) => {
-      state.fetchedDomains = action.payload
+      const fetchedDomains = action.payload
+      const filteredDomains = getDomainsByFilters(
+        action.payload,
+        state.filter.types.filter(type => type.selected).map(({ type }) => type),
+      )
+
+      state.fetchedDomains = fetchedDomains
+      state.filteredDomains = filteredDomains
     },
   },
 })
 
 export const { reducer: domainsReducer } = counter
-export const { setDomainsType, setDomainsAvailability, setFilter, setDomains } = counter.actions
+export const { setFilter, setDomains } = counter.actions
