@@ -6,7 +6,7 @@ import {
   Redirect,
   withRouter,
 } from 'react-router-dom'
-import { App } from './App'
+import { MainPage } from './pages/main'
 
 const ScrollToTop = withRouter(({ history }: any) => {
   useEffect(() => {
@@ -25,7 +25,7 @@ export const Routes = () => (
   <Router>
     <ScrollToTop />
     <Switch>
-      <Route path="/" exact component={App} />
+      <Route path="/" exact component={MainPage} />
       <Redirect to="/" />
     </Switch>
   </Router>

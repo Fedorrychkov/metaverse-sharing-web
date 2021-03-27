@@ -1,13 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import 'antd/dist/antd.css'
+import { Provider } from 'react-redux'
+import { ThemeProvider } from '@material-ui/styles'
 import 'normalize.css'
+import './index.css'
 import { reportWebVitals } from './reportWebVitals'
 import { Routes } from './routes'
+import { store } from './store'
+import { theme } from './theme'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Routes />
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <Routes />
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 )
