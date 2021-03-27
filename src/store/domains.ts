@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { domainsWithCategories } from './mock-domains'
 
 export type IDomain = {
   name: string
@@ -78,6 +79,19 @@ const getDomainsByFilters = (domains: any | IDomain[], selectedTypes: string[]) 
   })
 }
 
+const concatDomainsWithCategoriesMock = (domains: IDomain[], domainsCats: Pick<IDomain, 'categories' | 'name'>[]) => {
+  return domains.map(domain => {
+    const finded = domainsCats.find(
+      (withCats: Pick<IDomain, 'categories' | 'name'>) =>
+        withCats.name.toLowerCase() === domain.name.replace('.crypto', '').replace('.eth', '').replace('.zil', '').toLowerCase())
+
+    return {
+      ...domain,
+      ...finded,
+    }
+  }) as never[]
+}
+
 const counter = createSlice({
   name: 'domains',
   initialState: {
@@ -106,9 +120,9 @@ const counter = createSlice({
       state.filter.isAvailable = isAvailable
     },
     setDomains: (state, action) => {
-      const fetchedDomains = action.payload
+      const fetchedDomains = concatDomainsWithCategoriesMock(action.payload, domainsWithCategories)
       const filteredDomains = getDomainsByFilters(
-        action.payload,
+        fetchedDomains,
         state.filter.types.filter(type => type.selected).map(({ type }) => type),
       )
 

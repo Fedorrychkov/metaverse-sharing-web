@@ -10,7 +10,6 @@ import { Domain } from '~/components/domain'
 const domains = [
   {
     name: 'unstoppableDomains.crypto',
-    categories: ['Development', 'NFT'],
     price: 'Ξ0.045',
     isAvailable: true,
     whenAvailable: '1617161963969',
@@ -20,7 +19,6 @@ const domains = [
   },
   {
     name: 'blockchainua.crypto',
-    categories: ['Development'],
     price: 'Ξ0.045',
     isAvailable: false,
     whenAvailable: '1617161963969',
@@ -29,8 +27,7 @@ const domains = [
     associatedHash: '0x68A133aeEb048c687c2e82cFb7ed7CFCD138591c',
   },
   {
-    name: 'block.crypto',
-    categories: ['Community'],
+    name: 'Metaverse.eth',
     price: 'Ξ0.045',
     isAvailable: false,
     whenAvailable: '1617161963969',

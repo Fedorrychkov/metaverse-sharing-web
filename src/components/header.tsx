@@ -26,7 +26,7 @@ export const Header = () => {
             </Typography>
             <Box>
               <Typography color="textPrimary" className={styles.subtitle}>
-                {domainLength} 24 .crypto {'&'} .zil domains for 1-year rent.
+                {domainLength} .crypto {'&'} .zil domains for 1-year rent.
               </Typography>
               <a href="/#" className={`${styles.subtitle} ${styles.link}`}>
                 <Typography>Read the lightpaper →</Typography>
