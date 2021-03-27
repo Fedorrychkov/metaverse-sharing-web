@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/metaverse-sharing-web/static/css/main.2198020a.chunk.css",
+    "main.js": "/metaverse-sharing-web/static/js/main.1503aca8.chunk.js",
+    "main.js.map": "/metaverse-sharing-web/static/js/main.1503aca8.chunk.js.map",
+    "runtime-main.js": "/metaverse-sharing-web/static/js/runtime-main.7637d28e.js",
+    "runtime-main.js.map": "/metaverse-sharing-web/static/js/runtime-main.7637d28e.js.map",
+    "static/css/2.679831fc.chunk.css": "/metaverse-sharing-web/static/css/2.679831fc.chunk.css",
+    "static/js/2.5ae29d31.chunk.js": "/metaverse-sharing-web/static/js/2.5ae29d31.chunk.js",
+    "static/js/2.5ae29d31.chunk.js.map": "/metaverse-sharing-web/static/js/2.5ae29d31.chunk.js.map",
+    "static/js/3.fbb3a9ff.chunk.js": "/metaverse-sharing-web/static/js/3.fbb3a9ff.chunk.js",
+    "static/js/3.fbb3a9ff.chunk.js.map": "/metaverse-sharing-web/static/js/3.fbb3a9ff.chunk.js.map",
+    "index.html": "/metaverse-sharing-web/index.html",
+    "static/css/2.679831fc.chunk.css.map": "/metaverse-sharing-web/static/css/2.679831fc.chunk.css.map",
+    "static/css/main.2198020a.chunk.css.map": "/metaverse-sharing-web/static/css/main.2198020a.chunk.css.map",
+    "static/js/2.5ae29d31.chunk.js.LICENSE.txt": "/metaverse-sharing-web/static/js/2.5ae29d31.chunk.js.LICENSE.txt",
+    "static/media/is-mine.19da38c1.svg": "/metaverse-sharing-web/static/media/is-mine.19da38c1.svg",
+    "static/media/logo.d2086062.svg": "/metaverse-sharing-web/static/media/logo.d2086062.svg",
+    "static/media/not-available.d227c044.svg": "/metaverse-sharing-web/static/media/not-available.d227c044.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7637d28e.js",
+    "static/css/2.679831fc.chunk.css",
+    "static/js/2.5ae29d31.chunk.js",
+    "static/css/main.2198020a.chunk.css",
+    "static/js/main.1503aca8.chunk.js"
+  ]
+}

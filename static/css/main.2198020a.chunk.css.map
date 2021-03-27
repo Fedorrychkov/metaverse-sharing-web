@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/index.css"],"names":[],"mappings":"AAAA,WACE,gBAAiB,CACjB,oBAAa,CAAb,YAAa,CACb,6BAAsB,CAAtB,qBACF","file":"main.2198020a.chunk.css","sourcesContent":["#root, .app {\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column;\n}\n"]}
