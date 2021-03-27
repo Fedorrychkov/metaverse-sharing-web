@@ -2,7 +2,7 @@
   "name": "metaverse-sharing-web",
   "version": "0.0.1",
   "private": true,
-  "homepage": "http://fedorrychkov.github.io/metaverse-sharing-web",
+  "homepage": ".",
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@reduxjs/toolkit": "^1.5.1",
