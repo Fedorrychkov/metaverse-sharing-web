@@ -22,9 +22,8 @@ const ScrollToTop = withRouter(({ history }: any) => {
 
   return (null)
 })
-
 export const Routes = () => (
-  <Router>
+  <Router basename={process.env.REACT_APP_PUBLIC_URL_PATHNAME}>
     <ScrollToTop />
     <Switch>
       <Route path="/" exact component={MainPage} />
