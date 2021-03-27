@@ -4,6 +4,7 @@ import { DefaultLayout } from '~/layouts/default-layout'
 import { Filter } from '~/components/filter'
 
 export const MainPage = () => {
+
   return (
     <DefaultLayout>
       <Container>
