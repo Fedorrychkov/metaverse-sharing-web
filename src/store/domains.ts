@@ -83,11 +83,11 @@ const concatDomainsWithCategoriesMock = (domains: IDomain[], domainsCats: Pick<I
   return domains.map(domain => {
     const finded = domainsCats.find(
       (withCats: Pick<IDomain, 'categories' | 'name'>) =>
-        withCats.name.toLowerCase() === domain.name.replace('.crypto', '').replace('.eth', '').replace('.zil', '').toLowerCase())
+        withCats.name.toLowerCase() === domain.name.toLowerCase().replace(/.crypto|.eth|.zip/gi, ''))
 
     return {
       ...domain,
-      ...finded,
+      ...(finded && { categories: finded.categories }),
     }
   }) as never[]
 }

@@ -21,14 +21,14 @@ export const Breadcrumbs = ({ paths = [] }: Props) => {
           <Box className={styles.content} mx="-4px">
             {paths.map((path, index) => {
               return paths.length - 1 === index ? (
-                <>
+                <Box key={index}>
                   <Typography className={styles.link}>{path.title}</Typography>
-                </>
+                </Box>
               ) : (
-                <>
+                <Box key={index} className={styles.content}>
                   <NavLink className={styles.link} to={path.url || '/'}><Typography className={styles.link}>{path.title}</Typography></NavLink>
                   <Typography className={styles.link}>←</Typography>
-                </>
+                </Box>
               )
             })}
           </Box>
