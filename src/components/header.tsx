@@ -5,6 +5,8 @@ import { MetamaskBtn } from './metamask-btn'
 import logo from '~/assets/icons/logo.svg'
 import { useSelector } from 'react-redux'
 import { IStore } from '~/store/types'
+import { useObservable } from 'rxjs-hooks'
+import { Web3Provider } from '~/services/web3'
 
 export const Header = ({ invertedColors = false }: { invertedColors?: boolean }) => {
   const styles = useStyles()
@@ -12,6 +14,7 @@ export const Header = ({ invertedColors = false }: { invertedColors?: boolean })
   const domainLength = useMemo(() => fetchedDomains.length, [fetchedDomains])
   const availableDomainsLength = useMemo(() =>
     fetchedDomains.filter(domain => domain.isAvailable).length, [fetchedDomains])
+  const rates = useObservable(() => Web3Provider.prices)
 
   return (
     <Box component="header" py={4}>
@@ -28,7 +31,12 @@ export const Header = ({ invertedColors = false }: { invertedColors?: boolean })
               <Typography color="textPrimary" className={styles.subtitle}>
                 {domainLength} .crypto {'&'} .zil domains for 1-year rent.
               </Typography>
-              <a href="/#" className={`${styles.subtitle} ${styles.link}`}>
+              <a
+                href="https://readymag.com/valeriiapanina/hackathon/"
+                target="_blank"
+                rel="noreferrer"
+                className={`${styles.subtitle} ${styles.link}`}
+              >
                 <Typography>Read the lightpaper →</Typography>
               </a>
             </Box>
@@ -44,10 +52,10 @@ export const Header = ({ invertedColors = false }: { invertedColors?: boolean })
               </Typography>
               <Box pt={1} />
               <Typography color="textPrimary" className={styles.counts}>
-                1 BTC = 1 BTC
+                1 BTC = {rates && rates[2]} USD
               </Typography>
               <Typography color="textPrimary" className={styles.counts}>
-                1 ETH = 1 ETH
+                1 ETH = {rates && rates[0]} USD
               </Typography>
             </Box>
           </Box>

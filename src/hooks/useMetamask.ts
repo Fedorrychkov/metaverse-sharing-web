@@ -3,7 +3,7 @@ import { Web3Provider } from '~/services/web3'
 
 export const useMetamask = () => {
   const [hasWeb3, setHasWeb3] = useState(false)
-  const [account, setAccount] = useState()
+  const [account, setAccount] = useState('')
 
   useEffect(() => {
     if (Web3Provider.hasWeb3()) return setHasWeb3(true)
@@ -15,6 +15,7 @@ export const useMetamask = () => {
       const account = await Web3Provider.fetchAccount()
       if (account) {
         setAccount(account)
+        clearInterval(timerId)
       }
     }
 
@@ -28,7 +29,7 @@ export const useMetamask = () => {
   }, [])
 
   const handleConnectWithMetamask = useCallback(() => {
-    return Web3Provider.connectWithMetamask()
+    return Web3Provider.connectWallet()
   }, [])
 
   const handleDisconnectFromMetamask = useCallback(async () => {

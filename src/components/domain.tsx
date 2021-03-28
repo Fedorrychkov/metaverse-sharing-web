@@ -16,6 +16,8 @@ export const Domain = ({ domain }: Props) => {
   const { categories, name, price, isAvailable, associatedHash } = domain
   const isMine = useMemo(() => associatedHash === account, [associatedHash, account])
 
+  console.log(account, associatedHash, `${account}` === `${associatedHash}`, name)
+
   return (
     <NavLink className={styles.link} to={`/${name.toLowerCase()}`}>
       <Box className={styles.card} style={{ backgroundColor: isMine ? '#65bd8d' : domain.color }} mb={2}>
