@@ -1,28 +1,31 @@
 {
   "files": {
     "main.css": "./static/css/main.2198020a.chunk.css",
-    "main.js": "./static/js/main.ccf95c2e.chunk.js",
-    "main.js.map": "./static/js/main.ccf95c2e.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.657ec965.js",
-    "runtime-main.js.map": "./static/js/runtime-main.657ec965.js.map",
+    "main.js": "./static/js/main.fdd52bad.chunk.js",
+    "main.js.map": "./static/js/main.fdd52bad.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.a3c91ce5.js",
+    "runtime-main.js.map": "./static/js/runtime-main.a3c91ce5.js.map",
     "static/css/2.679831fc.chunk.css": "./static/css/2.679831fc.chunk.css",
-    "static/js/2.2e3b7b8b.chunk.js": "./static/js/2.2e3b7b8b.chunk.js",
-    "static/js/2.2e3b7b8b.chunk.js.map": "./static/js/2.2e3b7b8b.chunk.js.map",
-    "static/js/3.fbb3a9ff.chunk.js": "./static/js/3.fbb3a9ff.chunk.js",
-    "static/js/3.fbb3a9ff.chunk.js.map": "./static/js/3.fbb3a9ff.chunk.js.map",
+    "static/js/2.3e7f4cf8.chunk.js": "./static/js/2.3e7f4cf8.chunk.js",
+    "static/js/2.3e7f4cf8.chunk.js.map": "./static/js/2.3e7f4cf8.chunk.js.map",
+    "static/js/3.ac19b7cf.chunk.js": "./static/js/3.ac19b7cf.chunk.js",
+    "static/js/3.ac19b7cf.chunk.js.map": "./static/js/3.ac19b7cf.chunk.js.map",
     "index.html": "./index.html",
     "static/css/2.679831fc.chunk.css.map": "./static/css/2.679831fc.chunk.css.map",
     "static/css/main.2198020a.chunk.css.map": "./static/css/main.2198020a.chunk.css.map",
-    "static/js/2.2e3b7b8b.chunk.js.LICENSE.txt": "./static/js/2.2e3b7b8b.chunk.js.LICENSE.txt",
+    "static/js/2.3e7f4cf8.chunk.js.LICENSE.txt": "./static/js/2.3e7f4cf8.chunk.js.LICENSE.txt",
+    "static/media/check.835fe384.svg": "./static/media/check.835fe384.svg",
     "static/media/is-mine.19da38c1.svg": "./static/media/is-mine.19da38c1.svg",
     "static/media/logo.d2086062.svg": "./static/media/logo.d2086062.svg",
-    "static/media/not-available.d227c044.svg": "./static/media/not-available.d227c044.svg"
+    "static/media/metamask-fox.cc27a5cd.svg": "./static/media/metamask-fox.cc27a5cd.svg",
+    "static/media/not-available.d227c044.svg": "./static/media/not-available.d227c044.svg",
+    "static/media/validmine.81316c29.svg": "./static/media/validmine.81316c29.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.657ec965.js",
+    "static/js/runtime-main.a3c91ce5.js",
     "static/css/2.679831fc.chunk.css",
-    "static/js/2.2e3b7b8b.chunk.js",
+    "static/js/2.3e7f4cf8.chunk.js",
     "static/css/main.2198020a.chunk.css",
-    "static/js/main.ccf95c2e.chunk.js"
+    "static/js/main.fdd52bad.chunk.js"
   ]
 }
