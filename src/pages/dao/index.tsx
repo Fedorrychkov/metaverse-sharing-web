@@ -28,7 +28,7 @@ export const DaoPage = () => {
   const account = useObservable(() => Web3Provider.account)
 
   useEffect(() => {
-    // Web3Provider.getVaultData(vault.vaultContract).then(setVaultData)
+    // Web3Provider.getVaultData('tusdVault').then(setVaultData)
     setBalance(account?.tusdBalance || 0)
   }, [account])
 
@@ -36,7 +36,7 @@ export const DaoPage = () => {
 
   const onApprove = useCallback((amount: number, contract = 'tusdVault') => {
     setLoading(true)
-    return Web3Provider.approve(amount / 1, contract)
+    return Web3Provider.approve(amount / 0.000000000001, contract)
       .then(() => setStepType('approved'))
       .finally(() => setLoading(false))
   }, [])
@@ -45,7 +45,7 @@ export const DaoPage = () => {
   const onDeposit = useCallback(async (amount: number) => {
     setLoading(true)
 
-    return Web3Provider.deposit(amount, 'tusdVault')
+    return Web3Provider.deposit(amount / 0.000000000001, 'tusdVault')
       .then(() => Web3Provider.refresh())
       .then(() => setStepType('deposited'))
       .finally(() => setLoading(false))
@@ -54,7 +54,7 @@ export const DaoPage = () => {
   const onWithdraw = async (amount: number) => {
     setLoading(true)
 
-    return Web3Provider.withdraw(amount / 1000000000000, 'tusd')
+    return Web3Provider.withdraw(amount / 0.000000000001, 'tusd')
       .then(() => Web3Provider.refresh())
       .then(() => setStepType('withdrawal'))
       .finally(() => setLoading(false))

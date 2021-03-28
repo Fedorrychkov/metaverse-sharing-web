@@ -171,14 +171,14 @@ class Provider {
         withdrawn,
         liquidity,
       ] = await this.contract[contractName].getUserData(accountAddress)
-      totalDeposited = deposited
+      totalDeposited = deposited || 0
       totalWithdrawn = withdrawn
       liquidityRaw = liquidity
       const [cap, supply] = await this.contract[contractName].getTotalValueLocked()
       totalCap = cap
       totalSupply = supply
     } catch (ex) {
-      console.error(ex)
+      console.log(ex, 'EX')
     }
 
     const deposited = parseFloat(ethers.utils.formatUnits(totalDeposited, formatUnit))
