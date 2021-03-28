@@ -10,6 +10,7 @@ type Props = {
   children: React.ReactChild | React.ReactChild[]
   hasTabs?: boolean
   hasBreadCrumbs?: boolean
+  invertedColors?: boolean
   currentTabIndex?: number
   paths?: IBreadcrumb[]
 }
@@ -31,6 +32,7 @@ export const DefaultLayout = ({
   children,
   hasTabs = true,
   hasBreadCrumbs = false,
+  invertedColors = false,
   currentTabIndex = 0,
   paths = [],
 }: Props) => {
@@ -45,10 +47,10 @@ export const DefaultLayout = ({
 
   return (
     <Box display="flex" flexDirection="column" flex={1} bgcolor="background.default">
-      <Header />
+      <Header invertedColors={invertedColors} />
       <Box component="main" flex={1}>
         {hasTabs && <TabHead tabs={tabs} currentTabIndex={currentTabIndex} onChangeTab={onChangeTab} />}
-        {hasBreadCrumbs && <Breadcrumbs paths={paths} />}
+        {hasBreadCrumbs && <Breadcrumbs paths={paths} invertedColors={invertedColors} />}
         {
           Array.isArray(children) ?
             (

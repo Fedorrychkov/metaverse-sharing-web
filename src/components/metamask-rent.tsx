@@ -21,15 +21,6 @@ export const MetamaskRent = ({ domain }: { domain: IDomain}) => {
   const displayedAddress = useMemo(() => cutString(account, 12), [account])
   const isMine = useMemo(() => domain.associatedHash === account, [domain, account])
 
-
-  const handleConnect = useCallback(() => {
-    if (!account) {
-      handleConnectWithMetamask()
-
-      return
-    }
-  }, [account, handleConnectWithMetamask])
-
   const onRent = useCallback(() => {
     setRent(true)
     setIsHover(false)
@@ -38,6 +29,15 @@ export const MetamaskRent = ({ domain }: { domain: IDomain}) => {
       setPurchase(true)
     }
   }, [account, hasWeb3])
+
+  const handleConnect = useCallback(() => {
+    if (!account) {
+      handleConnectWithMetamask()
+
+      onRent()
+      return
+    }
+  }, [account, handleConnectWithMetamask, onRent])
 
   const onBack = useCallback(() => {
     setPurchase(false)

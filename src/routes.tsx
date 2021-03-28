@@ -7,6 +7,7 @@ import {
   withRouter,
 } from 'react-router-dom'
 import { ArtsPage } from './pages/art'
+import { DaoPage } from './pages/dao'
 import { DomainPage } from './pages/item'
 import { MainPage } from './pages/main'
 
@@ -28,6 +29,7 @@ export const Routes = () => (
     <Switch>
       <Route path="/" exact component={MainPage} />
       <Route path="/art" exact component={ArtsPage} />
+      <Route path="/dao" exact component={DaoPage} />
       <Route path="/:domain" exact component={DomainPage} />
       <Redirect to="/" />
     </Switch>

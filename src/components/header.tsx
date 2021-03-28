@@ -6,7 +6,7 @@ import logo from '~/assets/icons/logo.svg'
 import { useSelector } from 'react-redux'
 import { IStore } from '~/store/types'
 
-export const Header = () => {
+export const Header = ({ invertedColors = false }: { invertedColors?: boolean }) => {
   const styles = useStyles()
   const { fetchedDomains } = useSelector((state: IStore) => state.domains)
   const domainLength = useMemo(() => fetchedDomains.length, [fetchedDomains])
@@ -21,7 +21,7 @@ export const Header = () => {
             <NavLink to="/">
               <img src={logo} alt='' />
             </NavLink>
-            <Typography color="primary" className={styles.title}>
+            <Typography color="primary" className={`${styles.title} ${invertedColors && styles.invertedColorTitle}`}>
               #TheMetaverseFund
             </Typography>
             <Box>
@@ -78,5 +78,8 @@ const useStyles = makeStyles({
     borderBottom: '1px solid #fdff88',
     textDecoration: 'none',
     marginLeft: 4,
+  },
+  invertedColorTitle: {
+    color: '#e94a42',
   },
 })

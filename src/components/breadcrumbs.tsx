@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Button, Container, makeStyles, Typography } from '@material-ui/core'
+import { Box, Container, makeStyles, Typography } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 
 export type IBreadcrumb = {
@@ -8,14 +8,15 @@ export type IBreadcrumb = {
 }
 
 type Props = {
-  paths?: IBreadcrumb[],
+  paths?: IBreadcrumb[]
+  invertedColors?: boolean
 }
 
-export const Breadcrumbs = ({ paths = [] }: Props) => {
+export const Breadcrumbs = ({ paths = [], invertedColors = false }: Props) => {
   const styles = useStyles()
 
   return (
-    <Box className={styles.container} color="background.default">
+    <Box className={`${styles.container} ${invertedColors && styles.invertedContainerBackground}`} display="flex" alignItems="center" color="background.default">
       <Container>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Box className={styles.content} mx="-4px">
@@ -32,11 +33,15 @@ export const Breadcrumbs = ({ paths = [] }: Props) => {
               )
             })}
           </Box>
-          <Box>
-            <Button className={styles.btn}>
-              Side with the dao →
-            </Button>
-          </Box>
+          {!invertedColors && (
+            <Box>
+              <NavLink to="/dao" className={styles.btn}>
+                <Typography>
+                  Side with the dao →
+                </Typography>
+              </NavLink>
+            </Box>
+          )}
         </Box>
       </Container>
     </Box>
@@ -47,6 +52,10 @@ const useStyles = makeStyles({
   container: {
     background: 'linear-gradient(90deg, #2BB9EC 0%, #C696C6 51.04%, #EB73A8 97.4%)',
     padding: '2px 0',
+    minHeight: 48,
+  },
+  invertedContainerBackground: {
+    background: 'linear-gradient(90deg, #E15958 0%, #EF9052 51.04%, #E8E679 97.4%);',
   },
   btn: {
     fontSize: 14,
@@ -54,12 +63,12 @@ const useStyles = makeStyles({
     color: '#2a282e',
     border: '2px solid #2a282e',
     padding: '10px',
-    maxWidth: 192,
     whiteSpace: 'nowrap',
     textOverflow: 'elipsis',
     overflow: 'hidden',
-    width: '100%',
+    display: 'block',
     textTransform: 'uppercase',
+    textDecoration: 'none',
   },
   link: {
     fontSize: 20,

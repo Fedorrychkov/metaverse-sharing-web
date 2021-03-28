@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, Button, Container, makeStyles, Typography } from '@material-ui/core'
+import { NavLink } from 'react-router-dom'
 
 type ITab = {
   type: string
@@ -27,9 +28,9 @@ export const TabHead = ({ tabs, currentTabIndex, onChangeTab }: Props) => {
             ))}
           </Box>
           <Box>
-            <Button className={styles.btn}>
-              Side with the dao →
-            </Button>
+            <NavLink to="/dao" className={styles.btn}>
+              <Typography>Side with the dao →</Typography>
+            </NavLink>
           </Box>
         </Box>
       </Container>
@@ -47,12 +48,12 @@ const useStyles = makeStyles({
     color: '#2a282e',
     border: '2px solid #2a282e',
     padding: '10px',
-    maxWidth: 192,
     whiteSpace: 'nowrap',
     textOverflow: 'elipsis',
     overflow: 'hidden',
-    width: '100%',
+    display: 'block',
     textTransform: 'uppercase',
+    textDecoration: 'none',
   },
   tab: {
     flex: 1,
